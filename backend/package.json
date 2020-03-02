@@ -1,0 +1,7 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Johnny-Saraiva <johnny.saraiva.ads@gmail.com>",
+  "license": "MIT"
+}
