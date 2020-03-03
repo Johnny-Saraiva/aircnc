@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 
 const routes = require('./routes');
 
@@ -13,6 +14,7 @@ mongoose.connect('mongodb+srv://omnistack:omnistack@omnistack9-xin74.mongodb.net
 
 app.use(cors());//set restricted access to the backend application.
 app.use(express.json());
+app.use('/files', express.static(path.resolve(__dirname, '..', 'uploads')));
 app.use(routes);
 
 app.listen(3333);
