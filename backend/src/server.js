@@ -17,20 +17,20 @@ mongoose.connect('mongodb+srv://omnistack:omnistack@omnistack9-xin74.mongodb.net
   useUnifiedTopology: true,
 });
 
-const connectionUsers = {};
+const connectedUsers = {};
 
 io.on('connection', socket => {
   const { user_id } = socket.handshake.query;
 
-  connectionUsers[user_id] = socket.id;
+  connectedUsers[user_id] = socket.id;
 });
 
 app.use((req, res, next) => {
   req.io = io;
-  req.connectionUsers = connectionUsers;
+  req.connectedUsers = connectedUsers;
 
   return next();
-});
+})
 
 app.use(cors());//set restricted access to the backend application.
 app.use(express.json());
