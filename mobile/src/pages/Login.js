@@ -9,7 +9,7 @@ export default function Login({ navigation }) {
 
   const [email, setEmail] = useState('');
   const [techs, setTechs] = useState('');
-
+  
   useEffect(() => {
     AsyncStorage.getItem('user').then(user => {
       if (user) {
@@ -17,6 +17,7 @@ export default function Login({ navigation }) {
       }
     })
   }, []);
+  
 
   async function handleSubmit() {
     const response = await api.post('/sessions', {
@@ -26,8 +27,7 @@ export default function Login({ navigation }) {
     const { _id } = response.data;
 
     await AsyncStorage.setItem('user', _id);
-    await AsyncStorage.setItem('user', techs);
-
+    await AsyncStorage.setItem('techs', techs);
     navigation.navigate('List');
   }
 
